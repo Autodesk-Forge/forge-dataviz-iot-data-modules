@@ -6,11 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Build files
-client.js
-server.js
-
 .DS_Store
 node_modules/
 package-lock.json
 *.tgz
+webpack.config.js
