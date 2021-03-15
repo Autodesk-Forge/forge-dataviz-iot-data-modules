@@ -31,8 +31,8 @@ export const DataUnit = {
  * position in world coordinates (relative to the 3D model that it
  * belongs in), which is essential for it to show up at the right spot
  * in the 3D model.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.Device
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.Device
  */
 export class Device {
     /**
@@ -113,8 +113,8 @@ export class Device {
 
 /**
  * Attributes related to a property
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DeviceProperty
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DeviceProperty
  */
 export class DeviceProperty {
     /**
@@ -224,8 +224,8 @@ export class DeviceProperty {
 
 /**
  * Data representation of what properties a particular device has
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DeviceModel
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DeviceModel
  */
 class DeviceModel {
     constructor(deviceModelId, adapterId) {
@@ -323,8 +323,8 @@ class DeviceModel {
      * &nbsp;been added to the device model.
      *
      * @throws {Error} Property with the same ID already exists.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceModel#addProperty
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceModel#addProperty
      */
     addProperty(propId, name) {
         if (this._properties[propId]) {
@@ -346,8 +346,8 @@ class DeviceModel {
      * @returns {Device} The Device object that is added to the model.
      *
      * @throws {Error} Device with the same ID already exists.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceModel#addDevice
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceModel#addDevice
      */
     addDevice(deviceId) {
         if (this._devices[deviceId]) {
@@ -365,8 +365,8 @@ class DeviceModel {
      *
      * @returns {boolean} Returns true if the device with a given ID belongs
      * &nbsp;to this DeviceModel, or false otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceModel#contains
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceModel#contains
      */
     contains(deviceId) {
         return !!this._devices[deviceId];
@@ -378,8 +378,8 @@ class DeviceModel {
      * @param {string} deviceId Identifier of the device.
      * @returns {Device} The Device object if one is found
      * or undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceModel#getDevice
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceModel#getDevice
      */
     getDevice(deviceId) {
         return this._devices[deviceId];

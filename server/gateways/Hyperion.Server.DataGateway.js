@@ -25,8 +25,8 @@
  * client side.
  *
  * @class
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DataGateway
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DataGateway
  */
 class DataGateway {
     /**

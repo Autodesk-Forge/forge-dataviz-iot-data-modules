@@ -33,8 +33,8 @@ import { RequestPool } from "./Hyperion.Data.RequestPool";
  * Specifies the start and end points of a window in time,
  * along with a resolution that helps determine at which interval the time series
  * data is to be aggregated.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DateTimeSpan
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DateTimeSpan
  */
 class DateTimeSpan {
     /**
@@ -99,15 +99,15 @@ export { DateTimeSpan };
 
 /**
  * Class that provides a view into the data source
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DataView
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DataView
  * @augments EventSource
  */
 class DataView extends EventSource {
     /**
      *
      * Constructs an instance of DataView object. This method should not be used
-     * directly. A DataView object should be created through {@link Autodesk.Hyperion.Data.DataStore#createView} method of DataStore.
+     * directly. A DataView object should be created through {@link Autodesk.DataVisualization.Data.DataStore#createView} method of DataStore.
      * @param {DataStore} dataStore The owning DataStore object
      */
     constructor(dataStore) {
@@ -140,8 +140,8 @@ class DataView extends EventSource {
      * @param {string} deviceId Identifier of the device to be added to the view
      * @param {string|string[]} propertyIds Property identifier(s) to be added
      * &nbsp;to the view
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataView#addDeviceProperties
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataView#addDeviceProperties
      */
     addDeviceProperties(deviceId, propertyIds) {
         if (!this._deviceProperties[deviceId]) {
@@ -163,8 +163,8 @@ class DataView extends EventSource {
      * &nbsp;fetch the device data based on this given time window.
      *
      * @param {DateTimeSpan} dateTimeSpan The time window to set to view on.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataView#setTimeWindow
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataView#setTimeWindow
      */
     setTimeWindow(dateTimeSpan) {
         this._dateTimeSpan = dateTimeSpan;
@@ -184,8 +184,8 @@ class DataView extends EventSource {
      *
      * @returns {AggregatedValues|undefined} The aggregated values of a device
      * &nbsp;property if it has been loaded before, or undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataView#getAggregatedValues
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataView#getAggregatedValues
      */
     getAggregatedValues(deviceId, propertyId) {
         return this._dataStore.getAggregatedValues(deviceId, propertyId, this._dateTimeSpan);
@@ -194,8 +194,8 @@ class DataView extends EventSource {
     /**
      * Handle QueryCompleted event originated from DataStore object.
      * @param {QueryCompletedEventArgs} eventArgs The event argument.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataView#handleQueryCompleted
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataView#handleQueryCompleted
      */
     handleQueryCompleted(eventArgs) {
         const dts = eventArgs.query.dateTimeSpan;
@@ -227,8 +227,8 @@ export { DataView };
 
 /**
  * The storage of runtime device property data, both latest and aggregated.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DataStore
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DataStore
  */
 class DataStore extends EventSource {
     /**
@@ -271,8 +271,8 @@ class DataStore extends EventSource {
      * &nbsp;DataAdapter object to be registed as a data source.
      *
      * @throws {Error} Data adapter with the same ID already registered.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#registerDataAdapter
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#registerDataAdapter
      */
     registerDataAdapter(dataAdapter) {
         const id = dataAdapter.id;
@@ -288,8 +288,8 @@ class DataStore extends EventSource {
     /**
      * Begin loading all device models from registered data adapters
      * @returns {Promise<boolean>} Result of device model loading.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#loadDeviceModelsFromAdapters
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#loadDeviceModelsFromAdapters
      */
     async loadDeviceModelsFromAdapters() {
         this._deviceModels = {}; // Clear existing loaded device models.
@@ -316,8 +316,8 @@ class DataStore extends EventSource {
      * Creates an instance of DataView object for this DataStore.
      *
      * @returns {DataView} Returns a new instance of DataView object.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#createView
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#createView
      */
     createView() {
         return new DataView(this);
@@ -329,8 +329,8 @@ class DataStore extends EventSource {
      * @param {string} deviceId Identifier of the device.
      * @returns {Device} The Device object if one is found,
      * &nbsp;or undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#getDevice
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#getDevice
      */
     getDevice(deviceId) {
         const deviceModel = this.getDeviceModelFromDeviceId(deviceId);
@@ -344,8 +344,8 @@ class DataStore extends EventSource {
      *
      * @returns {DeviceModel} The DeviceModel object if one is found, or
      * &nbsp;undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#getDeviceModel
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#getDeviceModel
      */
     getDeviceModel(deviceModelId) {
         return this._deviceModels[deviceModelId];
@@ -359,8 +359,8 @@ class DataStore extends EventSource {
      *
      * @returns {DeviceModel} The DeviceModel object if one is found, or
      * &nbsp;undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#getDeviceModelFromDeviceId
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#getDeviceModelFromDeviceId
      */
     getDeviceModelFromDeviceId(deviceId) {
         const deviceModelId = this._getDeviceModelIdFromDeviceId(deviceId);
@@ -376,8 +376,8 @@ class DataStore extends EventSource {
      *
      * @returns {Promise<DeviceData>} The aggregated property data for
      * &nbsp;the queried device.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#fetchDeviceData
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#fetchDeviceData
      */
     async fetchDeviceData(query) {
         const deviceId = query.deviceId;
@@ -416,8 +416,8 @@ class DataStore extends EventSource {
      *
      * @returns {AggregatedValues|undefined} The aggregated values of a device
      * &nbsp;property if it has been loaded before, or 'undefined' otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DataStore#getAggregatedValues
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DataStore#getAggregatedValues
      */
     getAggregatedValues(deviceId, propertyId, dateTimeSpan) {
         const dd = this._deviceData[deviceId];
@@ -479,6 +479,8 @@ class DataStore extends EventSource {
         if (deviceModelId) {
             const deviceModel = this._deviceModels[deviceModelId];
             return deviceModel.adapterId;
+        } else {
+            return "RestApiDataAdapter"
         }
     }
 
@@ -501,7 +503,7 @@ class DataStore extends EventSource {
 
     /**
      * Gets a map of all uninque properties from all the deviceModels in the datastore.
-     * @returns {Map.<string,DeviceProperty>} Map of all the properties across all devicesModels in a {@link Autodesk.Hyperion.Data.DataStore} object.
+     * @returns {Map.<string,DeviceProperty>} Map of all the properties across all devicesModels in a {@link Autodesk.DataVisualization.Data.DataStore} object.
      */
     getPropertiesFromDataStore() {
         const deviceModels = Object.values(this._deviceModels);

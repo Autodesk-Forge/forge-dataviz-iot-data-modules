@@ -27,8 +27,8 @@ const requestQueue = new TaskQueue(6, "RequestPoolTaskQueue", true);
  * The request pool also makes use of TaskQueue to ensure that no more than the
  * intended number of concurrent requests can take place thereby rate limiting
  * the number of outgoing requests.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.RequestPool
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.RequestPool
  */
 export class RequestPool {
     /**
@@ -57,8 +57,8 @@ export class RequestPool {
      * &nbsp;values are to be retrieved.
      * @param {DateTimeSpan} dateTimeSpan The time range and resolution at which
      * &nbsp;aggregated values are to be retrieved.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.RequestPool#addRequest
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.RequestPool#addRequest
      */
     addRequest(deviceId, propertyId, dateTimeSpan) {
         const hashCode = dateTimeSpan.hashCode;

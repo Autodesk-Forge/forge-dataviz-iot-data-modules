@@ -24,8 +24,8 @@ let sessionCount = 0;
  * An instance of this object represents an active session that manages IoT
  * device data storage along with the data adapters that interact with specific
  * data providers to download device telemetry data.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.Session
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.Session
  */
 class Session {
     /**

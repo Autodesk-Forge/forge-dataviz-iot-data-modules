@@ -35,8 +35,8 @@ const fetch = _interopDefault(require("node-fetch"));
  * @classdesc A data gateway that supplies sensor data from Azure IoT Hub.
  * @class
  * @augments DataGateway
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.AzureGateway
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.AzureGateway
  */
 class AzureGateway extends DataGateway {
     constructor(deviceModelFile) {

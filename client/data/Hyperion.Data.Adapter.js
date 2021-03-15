@@ -23,8 +23,8 @@ import { DateTimeSpan } from "./Hyperion.Data.Storage";
 
 /**
  * Parameters used for device property data query.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.QueryParam
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.QueryParam
  */
 class QueryParam {
     /**
@@ -85,8 +85,8 @@ export { QueryParam };
 
 /**
  * Base class for all data adapters.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DataAdapter
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DataAdapter
  */
 export class DataAdapter {
     /**
@@ -121,8 +121,8 @@ export class DataAdapter {
      * &nbsp;DeviceModel is available, the promise resolves to an empty array.
      *
      * @throws {Error} This method must be implemented in derived class.
-     * @memberof Autodesk.Hyperion.Data.DataAdapter
-     * @alias Autodesk.Hyperion.Data.DataAdapter#loadDeviceModels
+     * @memberof Autodesk.DataVisualization.Data.DataAdapter
+     * @alias Autodesk.DataVisualization.Data.DataAdapter#loadDeviceModels
      */
     async loadDeviceModels() {
         throw new Error("'loadDeviceModels' not implemented");
@@ -138,8 +138,8 @@ export class DataAdapter {
      * &nbsp;DeviceModel objects populated with actual device IDs.
      *
      * @throws {Error} This method must be implemented in derived class.
-     * @memberof Autodesk.Hyperion.Data.DataAdapter
-     * @alias Autodesk.Hyperion.Data.DataAdapter#fetchDevicesForModels
+     * @memberof Autodesk.DataVisualization.Data.DataAdapter
+     * @alias Autodesk.DataVisualization.Data.DataAdapter#fetchDevicesForModels
      */
     async fetchDevicesForModels(deviceModels) {
         deviceModels;
@@ -156,8 +156,8 @@ export class DataAdapter {
      * &nbsp;property data for the queried device.
      *
      * @throws {Error} This method must be implemented in derived class.
-     * @memberof Autodesk.Hyperion.Data.DataAdapter
-     * @alias Autodesk.Hyperion.Data.DataAdapter#fetchDeviceData
+     * @memberof Autodesk.DataVisualization.Data.DataAdapter
+     * @alias Autodesk.DataVisualization.Data.DataAdapter#fetchDeviceData
      */
     async fetchDeviceData(query) {
         query;
@@ -167,8 +167,8 @@ export class DataAdapter {
 
 /**
  * Data adapter class dealing with Azure service.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.AzureDataAdapter
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.AzureDataAdapter
  * @augments DataAdapter
  */
 export class AzureDataAdapter extends DataAdapter {
@@ -202,8 +202,8 @@ export class AzureDataAdapter extends DataAdapter {
      * @returns {Promise<DeviceModel[]>} A promise that resolves to a single
      * &nbsp;dimensional array containing a list of loaded DeviceModel objects. If no
      * &nbsp;DeviceModel is available, the promise resolves to an empty array.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.AzureDataAdapter#loadDeviceModels
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.AzureDataAdapter#loadDeviceModels
      */
     async loadDeviceModels() {
         const adapterId = this.id;
@@ -248,8 +248,8 @@ export class AzureDataAdapter extends DataAdapter {
      *
      * @returns {Promise<DeviceModel[]>} A promise that resolves to the
      * &nbsp;DeviceModel objects populated with actual device IDs.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.AzureDataAdapter#fetchDevicesForModels
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.AzureDataAdapter#fetchDevicesForModels
      */
     async fetchDevicesForModels(deviceModels) {
         const promises = deviceModels.map((deviceModel) => {
@@ -266,6 +266,9 @@ export class AzureDataAdapter extends DataAdapter {
                     let deviceObj = deviceModel.addDevice(device.deviceId);
                     if (device.tags) {
                         deviceObj.name = device.tags.name;
+                        deviceObj.deviceModel = deviceModel;
+                        deviceObj.sensorTypes = deviceModel.propertyIds;
+
                         if (device.tags.position) {
                             let p = device.tags.position;
                             deviceObj.position = new THREE.Vector3(parseFloat(p.x), parseFloat(p.y), parseFloat(p.z));
@@ -285,8 +288,8 @@ export class AzureDataAdapter extends DataAdapter {
      *
      * @returns {Promise<DeviceData>} A promise that resolves to an aggregated
      * &nbsp;property data for the queried device.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.AzureDataAdapter#fetchDeviceData
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.AzureDataAdapter#fetchDeviceData
      */
     async fetchDeviceData(query) {
         const qs = this.getQueryString(query);
@@ -352,8 +355,8 @@ export class AzureDataAdapter extends DataAdapter {
 
 /**
  * Data adapter class dealing with sample data.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.RestApiDataAdapter
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.RestApiDataAdapter
  * @augments DataAdapter
  */
 export class RestApiDataAdapter extends DataAdapter {
@@ -372,8 +375,8 @@ export class RestApiDataAdapter extends DataAdapter {
      * @returns {Promise<DeviceModel[]>} A promise that resolves to a single
      * &nbsp;dimensional array containing a list of loaded DeviceModel objects. If no
      * &nbsp;DeviceModel is available, the promise resolves to an empty array.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.RestApiDataAdapter#loadDeviceModels
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.RestApiDataAdapter#loadDeviceModels
      */
     async loadDeviceModels() {
         const adapterId = this.id;
@@ -418,8 +421,8 @@ export class RestApiDataAdapter extends DataAdapter {
      *
      * @returns {Promise<DeviceModel[]>} A promise that resolves to the
      * &nbsp;DeviceModel objects populated with actual device IDs.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.RestApiDataAdapter#fetchDevicesForModels
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.RestApiDataAdapter#fetchDevicesForModels
      */
     async fetchDevicesForModels(deviceModels) {
         const promises = deviceModels.map((deviceModel) => {
@@ -443,6 +446,8 @@ export class RestApiDataAdapter extends DataAdapter {
                     const p = deviceInfo.position;
                     device.position = new THREE.Vector3(parseFloat(p.x), parseFloat(p.y), parseFloat(p.z));
                     device.lastActivityTime = deviceInfo.lastActivityTime;
+                    device.deviceModel = deviceModel;
+                    device.sensorTypes = deviceModel.propertyIds;
                 });
             });
 
@@ -457,8 +462,8 @@ export class RestApiDataAdapter extends DataAdapter {
      *
      * @returns {Promise<DeviceData>} A promise that resolves to an aggregated
      * &nbsp;property data for the queried device.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.RestApiDataAdapter#fetchDeviceData
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.RestApiDataAdapter#fetchDeviceData
      */
     async fetchDeviceData(query) {
         const pids = query.propertyIds;

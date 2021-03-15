@@ -127,8 +127,8 @@ import { DateTimeSpan } from "./Hyperion.Data.Storage";
 
 /**
  * Timestamped values of a device's property
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.PropertyValue
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.PropertyValue
  */
 export class PropertyValue {
     /**
@@ -158,8 +158,8 @@ export class PropertyValue {
 
 /**
  * Object that holds aggregated values of a device's property
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.AggregatedValues
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.AggregatedValues
  */
 export class AggregatedValues {
     /**
@@ -311,8 +311,8 @@ export class AggregatedValues {
      * Gets the range of values for a particular aggregate type
      * @param {string} propName The aggregate type
      * @returns {{min:number, max:number}}
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.AggregatedValues#getDataRange
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.AggregatedValues#getDataRange
      */
     getDataRange(propName) {
         return this._dataRange[propName];
@@ -322,8 +322,8 @@ export class AggregatedValues {
      * Sets the range of values for a particular aggregate type
      * @param {string} propName The aggregate type
      * @param  {{min:number, max:number}} value The data range
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.AggregatedValues#setDataRange
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.AggregatedValues#setDataRange
      */
     setDataRange(propName, value) {
         this._dataRange[propName] = value;
@@ -332,8 +332,8 @@ export class AggregatedValues {
 
 /**
  * Property values associated with a particular property
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.PropertyData
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.PropertyData
  */
 export class PropertyData {
     /**
@@ -367,8 +367,8 @@ export class PropertyData {
      *
      * @param {PropertyData} otherPropertyData The source PropertyData object
      * &nbsp;to merge property data from.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.PropertyData#mergeFrom
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.PropertyData#mergeFrom
      */
     mergeFrom(otherPropertyData) {
         this.setCurrentValue(otherPropertyData.getCurrentValue());
@@ -384,8 +384,8 @@ export class PropertyData {
      * Sets the most up-to-date value of this property.
      *
      * @param {PropertyValue} propertyValue The latest value of the property.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.PropertyData#setCurrentValue
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.PropertyData#setCurrentValue
      */
     setCurrentValue(propertyValue) {
         this._currentValue = propertyValue;
@@ -396,8 +396,8 @@ export class PropertyData {
      *
      * @returns {PropertyValue} The latest value of the property if one is
      * &nbsp;currently specified or undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.PropertyData#getCurrentValue
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.PropertyData#getCurrentValue
      */
     getCurrentValue() {
         return this._currentValue;
@@ -410,8 +410,8 @@ export class PropertyData {
      * &nbsp;associated with this property data object.
      *
      * @returns {string} The identifier of the AggregatedValues object.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.PropertyData#setAggregatedValues
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.PropertyData#setAggregatedValues
      */
     setAggregatedValues(aggregatedValues) {
         const id = aggregatedValues.id;
@@ -426,8 +426,8 @@ export class PropertyData {
      * &nbsp;aggregated values are to be retrieved.
      * @returns {AggregatedValues} A reference to the AggregatedValues object if
      * &nbsp;one is found that match the criteria; undefined otherwise.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.PropertyData#getAggregatedValues
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.PropertyData#getAggregatedValues
      */
     getAggregatedValues(dateTimeSpan) {
         const id = dateTimeSpan.hashCode;
@@ -437,8 +437,8 @@ export class PropertyData {
 
 /**
  * Class showing the relationship of a device to its available properties and their corresponding values.
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.DeviceData
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.DeviceData
  */
 export class DeviceData {
     /**
@@ -475,8 +475,8 @@ export class DeviceData {
      *
      * @param {DeviceData} otherDeviceData The source DeviceData object to
      * &nbsp;merge property data from.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceData#mergeFrom
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceData#mergeFrom
      */
     mergeFrom(otherDeviceData) {
         const propDataList = otherDeviceData.propertyDataList;
@@ -501,8 +501,8 @@ export class DeviceData {
      *
      * @returns {PropertyData} The PropertyData object. This method always
      * &nbsp;return a valid instance of PropertyData.
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.DeviceData#getPropertyData
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.DeviceData#getPropertyData
      */
     getPropertyData(propId) {
         if (!this._propData[propId]) {

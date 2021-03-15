@@ -22,8 +22,8 @@ export const EventType = {
 
 /**
  * Class to encapsulate arguments for a QueryCompleted event to be used with {@link EventSource}
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.QueryCompletedEventArgs
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.QueryCompletedEventArgs
  */
 export class QueryCompletedEventArgs {
     /**
@@ -44,8 +44,8 @@ export class QueryCompletedEventArgs {
 
 /**
  * Base class for publish subscribe handling of events
- * @memberof Autodesk.Hyperion.Data
- * @alias Autodesk.Hyperion.Data.EventSource
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.EventSource
  */
 export class EventSource {
     /**
@@ -59,8 +59,8 @@ export class EventSource {
      * Register a new event handler
      * @param {string} eventType Event to be subscribed to
      * @param {Function} eventHandler Handler for the event
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.EventSource#addEventListener
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.EventSource#addEventListener
      */
     addEventListener(eventType, eventHandler) {
         if (!this._eventHandlers[eventType]) {
@@ -74,8 +74,8 @@ export class EventSource {
      * De-register a handler
      * @param {string} eventType Event type of the handler
      * @param {Function} eventHandler Handler that is to be deregistered
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.EventSource#removeEventListener
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.EventSource#removeEventListener
      */
     removeEventListener(eventType, eventHandler) {
         const handlers = this._eventHandlers[eventType] || [];
@@ -89,8 +89,8 @@ export class EventSource {
      * Emit a new event
      * @param {string} eventType Event type that occurred
      * @param {any} eventArgs Misc arguments for that event
-     * @memberof Autodesk.Hyperion.Data
-     * @alias Autodesk.Hyperion.Data.EventSource#emit
+     * @memberof Autodesk.DataVisualization.Data
+     * @alias Autodesk.DataVisualization.Data.EventSource#emit
      */
     emit(eventType, eventArgs) {
         const handlers = this._eventHandlers[eventType] || [];
