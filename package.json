@@ -1,10 +1,7 @@
 {
     "name": "forge-dataviz-iot-data-modules",
-    "version": "0.1.1-alpha.4",
+    "version": "0.1.1-alpha.5",
     "description": "IoT data modules used by https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app",
-    "scripts": {
-        "build": "webpack --config webpack.config.js"
-    },
     "author": "Autodesk Inc",
     "license": "Apache-2.0",
     "repository": {
