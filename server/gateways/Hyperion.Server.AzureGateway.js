@@ -1,5 +1,5 @@
 //
-// Copyright 2020 Autodesk
+// Copyright 2021 Autodesk
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -25,9 +25,9 @@ const msRestNodeAuth = require("@azure/ms-rest-nodeauth");
 const { IotHubClient } = require("@azure/arm-iothub");
 const { Registry, Twin } = require("azure-iothub");
 const Q = require("q");
-const {loadJSONFile} = require("./FileUtility.js")
+const { loadJSONFile } = require("./FileUtility.js")
 
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+function _interopDefault(ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
 
 const fetch = _interopDefault(require("node-fetch"));
 
@@ -63,12 +63,12 @@ class AzureGateway extends DataGateway {
                 delete modelProperties.$metadata;
                 delete modelProperties.$version;
                 const modelId = properties.tags.modelId ? properties.tags.modelId : undefined;
-                if (!modelId){
+                if (!modelId) {
                     console.warn(`Skipped ${properties.deviceId} as it is missing the modelId tag.
-                    Please add modelId : < your device-model-id> under tags in IoT hub Device Twin.`); 
+                    Please add modelId : < your device-model-id> under tags in IoT hub Device Twin.`);
                     continue;
                 }
-        
+
                 if (modelId === deviceModelId) {
                     result.push({
                         deviceId: properties.deviceId,

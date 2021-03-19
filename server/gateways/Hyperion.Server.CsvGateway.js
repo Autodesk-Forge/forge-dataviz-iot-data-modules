@@ -1,5 +1,5 @@
 //
-// Copyright 2020 Autodesk
+// Copyright 2021 Autodesk
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@ const Q = require("q");
 const Path = require("path");
 const ES = require("event-stream");
 const timestring = require("timestring");
-const {loadJSONFile} = require("./FileUtility.js")
+const { loadJSONFile } = require("./FileUtility.js")
 
 /**
  * @classdesc A data gateway that supplies CSV data from local

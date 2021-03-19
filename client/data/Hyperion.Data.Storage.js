@@ -1,5 +1,5 @@
 //
-// Copyright 2020 Autodesk
+// Copyright 2021 Autodesk
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import { QueryParam } from "./Hyperion.Data.Adapter";
 import { DataAdapter } from "./Hyperion.Data.Adapter";
 // eslint-disable-next-line no-unused-vars
 import { DeviceData, AggregatedValues } from "./Hyperion.Data.DataModel";
-import { DeviceModel,DeviceProperty } from "./Hyperion.Data.DeviceModel";
+import { DeviceModel, DeviceProperty } from "./Hyperion.Data.DeviceModel";
 // eslint-disable-next-line no-unused-vars
 import { EventSource, QueryCompletedEventArgs, EventType } from "./Hyperion.Data.Event";
 import { RequestPool } from "./Hyperion.Data.RequestPool";
