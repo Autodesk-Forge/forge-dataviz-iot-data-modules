@@ -103,6 +103,8 @@ class Synthetic {
  * @classdesc A data gateway that supplies synthetic data.
  * @class
  * @augments DataGateway
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.SyntheticGateway
  */
 class SyntheticGateway extends DataGateway {
     constructor() {

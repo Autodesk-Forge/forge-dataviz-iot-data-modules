@@ -26,6 +26,8 @@ const { loadJSONFile } = require("./FileUtility.js")
  * @classdesc A data gateway that supplies CSV data from local
  * @class
  * @augments DataGateway
+ * @memberof Autodesk.DataVisualization.Data
+ * @alias Autodesk.DataVisualization.Data.CsvDataGateway
  */
 class CsvDataGateway extends DataGateway {
     /**
