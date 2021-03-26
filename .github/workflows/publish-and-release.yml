@@ -42,7 +42,7 @@ jobs:
         run: |
           echo ${{ steps.check-for-version-diff.outputs.result }}
           npm install
-          npm publish --dry-run
+          npm publish
           echo "PUBLISHED_VERSION=$(npm view forge-dataviz-iot-data-modules dist-tags.latest)" >> $GITHUB_ENV
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
