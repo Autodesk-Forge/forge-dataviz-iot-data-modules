@@ -15,7 +15,7 @@
 //
 const DataGateway = require("./Hyperion.Server.DataGateway");
 const tweenFunctions = require("tween-functions");
-const config = require("./synthetic-data/config");
+const { loadJSONFile } = require("./FileUtility.js");
 
 const STARTDATE = new Date("2020-01-01");
 
@@ -33,7 +33,13 @@ function weekNum(time) {
 }
 
 class Synthetic {
-    constructor() { }
+    /**
+     *
+     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.js
+     */
+    constructor(configFile) {
+        this.config = require(configFile);
+    }
 
     nextStop(stops, index, direction) {
         let nextIndex = index + 1 * direction;
@@ -58,7 +64,7 @@ class Synthetic {
     _getStops(sensorType, time) {
         let week = weekNum(time);
         let day = time.getDay() % 7;
-        let sensorConfig = config["Strategy"][sensorType] || config["Strategy"]["Temperature"];
+        let sensorConfig = this.config["Strategy"][sensorType] || this.config["Strategy"]["Temperature"];
         return sensorConfig[day][week];
     }
 
@@ -66,7 +72,7 @@ class Synthetic {
         let hour = this._timeToDecimal(currentTime);
         let self = this;
         let stops = this._getStops(sensorType, currentTime);
-        let { min, max } = config["Range"][sensorType] || config["Range"]["Temperature"];
+        let { min, max } = this.config["Range"][sensorType] || this.config["Range"]["Temperature"];
 
         function tweenValue(hour, start, end) {
             let duration = end[0] - start[0];
@@ -107,16 +113,26 @@ class Synthetic {
  * @alias Autodesk.DataVisualization.Data.SyntheticGateway
  */
 class SyntheticGateway extends DataGateway {
-    constructor() {
+    /**
+     *
+     * @param {string} deviceModelFile File path to JSON file containing device model information. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/device-models.json
+     * @param {string} deviceFile File path to JSON file containing device information. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/devices.json
+     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.js
+     */
+    constructor(deviceModelFile, deviceFile, configFile) {
         super("SyntheticGateway");
+
+        this.deviceModelFile = deviceModelFile;
+        this.deviceFile = deviceFile;
+        this.configFile = configFile;
     }
 
     async getDeviceModels() {
-        return require("./synthetic-data/device-models.json");
+        return loadJSONFile(this.deviceModelFile);
     }
 
     async getDevicesInModel(deviceModelId) {
-        const devices = require("./synthetic-data/devices.json");
+        const devices = await loadJSONFile(this.deviceFile);
         return devices.find((device) => device.deviceModelId === deviceModelId);
     }
 
@@ -124,7 +140,7 @@ class SyntheticGateway extends DataGateway {
         deviceId; // Not used for synthetic data generation.
         propertyId; // Not used for synthetic data generation.
 
-        let synthetic = new Synthetic();
+        let synthetic = new Synthetic(this.configFile);
 
         // Just sample data, no need to validate existence of device/property IDs.
         const totalSeconds = Math.abs(endSecond - startSecond);

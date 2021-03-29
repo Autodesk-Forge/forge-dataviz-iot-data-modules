@@ -32,8 +32,8 @@ const { loadJSONFile } = require("./FileUtility.js")
 class CsvDataGateway extends DataGateway {
     /**
      *
-     * @param {string} deviceModelFile JSON file, please refer ./synthetic-data/device-models.json
-     * @param {string} deviceFile JSON file, please refer ./synthetic-data/devices.json
+     * @param {string} deviceModelFile JSON file, please refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/device-models.json
+     * @param {string} deviceFile JSON file, please refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/devices.json
      * @param {string} dataFile
      */
     constructor(

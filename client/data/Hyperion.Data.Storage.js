@@ -107,7 +107,7 @@ class DataView extends EventSource {
     /**
      *
      * Constructs an instance of DataView object. This method should not be used
-     * directly. A DataView object should be created through {@link Autodesk.DataVisualization.Data.DataStore#createView} method of DataStore.
+     * directly. A DataView object should be created through {@link DataStore#createView} method of DataStore.
      * @param {DataStore} dataStore The owning DataStore object
      */
     constructor(dataStore) {
@@ -503,7 +503,7 @@ class DataStore extends EventSource {
 
     /**
      * Gets a map of all uninque properties from all the deviceModels in the datastore.
-     * @returns {Map.<string,DeviceProperty>} Map of all the properties across all devicesModels in a {@link Autodesk.DataVisualization.Data.DataStore} object.
+     * @returns {Map.<string,DeviceProperty>} Map of all the properties across all devicesModels in a {@link DataStore} object.
      */
     getPropertiesFromDataStore() {
         const deviceModels = Object.values(this._deviceModels);
