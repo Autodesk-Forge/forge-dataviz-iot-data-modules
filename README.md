@@ -9,7 +9,7 @@ Re-usable IoT data modules that you can use to create your own IoT application u
 
 For more information, see the [Data Visualization Extension (Beta) Developer's Guide](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/).
 
-## Installating and Using the Modules
+## Installing and Using the Modules
 
 For full instructions for installing and running the Data Visualization Extension (Beta) Reference Application and supporting modules, see the [Data Visualization Extension (Beta) QuickStart](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/quickstart/).
 
