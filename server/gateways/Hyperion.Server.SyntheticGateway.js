@@ -38,7 +38,7 @@ class Synthetic {
      * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.js
      */
     constructor(configFile) {
-        this.config = require(configFile);
+        this.configFile = configFile;
     }
 
     nextStop(stops, index, direction) {
@@ -68,7 +68,8 @@ class Synthetic {
         return sensorConfig[day][week];
     }
 
-    value(sensorType, currentTime, interval) {
+    async value(sensorType, currentTime, interval) {
+        if (!this.config) this.config = await loadJSONFile(this.configFile);
         let hour = this._timeToDecimal(currentTime);
         let self = this;
         let stops = this._getStops(sensorType, currentTime);
@@ -128,7 +129,7 @@ class SyntheticGateway extends DataGateway {
     }
 
     async getDeviceModels() {
-        return loadJSONFile(this.deviceModelFile);
+        return await loadJSONFile(this.deviceModelFile);
     }
 
     async getDevicesInModel(deviceModelId) {
@@ -180,7 +181,7 @@ class SyntheticGateway extends DataGateway {
             let intervalToHour = gapSeconds / 60 / 60;
             for (let i = 0; i < 32; i++) {
                 let time = new Date(Math.round((currSecond + step * i) * 1000));
-                let v = synthetic.value(propertyId, time, intervalToHour);
+                let v = await synthetic.value(propertyId, time, intervalToHour);
                 values.push(v);
             }
 
