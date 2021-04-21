@@ -33,7 +33,7 @@ const { Y } = require("forge-dataviz-iot-data-modules/server");
 
 This package contains client-side and server-side modules. Server-side modules (or gateways) interact with the corresponding data provider. For example, AzureGateway interacts with Azure Time Series Insights API in order to retrieve specific sensor data.
 
-Client-side modules convert the data obtained from the corresponding DataGateway object into a consistent data format. For more details on how the client-side and server-side IoT data modules interact, see [Creating a Custom Data Adapter]( https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/advanced_topics/custom_data_adapter/)
+Client-side modules convert the data obtained from the corresponding DataGateway object into a consistent data format. For more details on how the client-side and server-side IoT data modules interact, see [Creating a Custom Data Adapter](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/advanced_topics/custom_data_adapter/)
 
 ### Client-side modules:
 
