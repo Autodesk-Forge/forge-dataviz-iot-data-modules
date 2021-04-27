@@ -232,14 +232,19 @@ class DeviceModel {
         this._deviceModelId = deviceModelId;
         this._adapterId = adapterId;
 
-        /** @type {Object.<string, DeviceProperty>} */
+        /** @type {Object.<string, DeviceProperty>} 
+         * The properties belonging to this DeviceModel.
+        */
         this._properties = {};
 
-        /** @type {Object.<string, Device>} */
+        /** @type {Object.<string, Device>}
+         * The list of devices belonging to this DeviceModel.
+         */
         this._devices = {};
     }
 
     /**
+     * The name of this device model, if any.
      * @param {string} value The name of this device model, if any.
      */
     set name(value) {
@@ -247,6 +252,7 @@ class DeviceModel {
     }
 
     /**
+     * The description of this device model, if any.
      * @param {string} value The description of this device model, if any.
      */
     set description(value) {
@@ -254,6 +260,7 @@ class DeviceModel {
     }
 
     /**
+     * The identifier of this instance of DeviceModel object.
      * @returns {string} The identifier of this instance of DeviceModel object.
      */
     get id() {
@@ -261,6 +268,8 @@ class DeviceModel {
     }
 
     /**
+     * The identifier of the DataAdapter that this instance
+     * &nbsp;of DeviceModel object originated from.
      * @returns {string} The identifier of the DataAdapter that this instance
      * of DeviceModel object originated from.
      */
@@ -269,6 +278,7 @@ class DeviceModel {
     }
 
     /**
+     * The name of this device model, if any.
      * @returns {string} The name of this device model, if any.
      */
     get name() {
@@ -276,6 +286,7 @@ class DeviceModel {
     }
 
     /**
+     * The description of this device model, if any.
      * @returns {string} The description of this device model, if any.
      */
     get description() {
@@ -283,6 +294,7 @@ class DeviceModel {
     }
 
     /**
+     * All property identifiers for this DeviceModel.
      * @returns {string[]} All property identifiers for this DeviceModel.
      */
     get propertyIds() {
@@ -290,6 +302,7 @@ class DeviceModel {
     }
 
     /**
+     * The properties belonging to this DeviceModel.
      * @returns {DeviceProperty[]} The properties belonging to this DeviceModel.
      */
     get properties() {
@@ -297,6 +310,7 @@ class DeviceModel {
     }
 
     /**
+     * All device identifiers found within this DeviceModel.
      * @returns {string[]} All device identifiers found within this DeviceModel.
      */
     get deviceIds() {
@@ -304,6 +318,7 @@ class DeviceModel {
     }
 
     /**
+     * The list of devices belonging to this DeviceModel.
      * @returns {Device[]} The list of devices belonging to this DeviceModel.
      */
     get devices() {

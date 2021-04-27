@@ -35,7 +35,7 @@ function weekNum(time) {
 class Synthetic {
     /**
      *
-     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.js
+     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.json
      */
     constructor(configFile) {
         this.configFile = configFile;
@@ -118,7 +118,7 @@ class SyntheticGateway extends DataGateway {
      *
      * @param {string} deviceModelFile File path to JSON file containing device model information. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/device-models.json
      * @param {string} deviceFile File path to JSON file containing device information. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/devices.json
-     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.js
+     * @param {string} configFile File path to config file defining the data stops and range values used to generate synthetic data. For an example, refer to https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app/blob/main/server/gateways/synthetic-data/config.json
      */
     constructor(deviceModelFile, deviceFile, configFile) {
         super("SyntheticGateway");
