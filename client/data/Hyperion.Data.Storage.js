@@ -312,6 +312,10 @@ class DataStore extends EventSource {
         });
     }
 
+    addDeviceModel(deviceMode) {
+        this._deviceModels[deviceMode.id] = deviceMode;
+    }
+
     /**
      * Creates an instance of DataView object for this DataStore.
      *
@@ -510,6 +514,11 @@ class DataStore extends EventSource {
         const nestedList = deviceModels.map((dm) => Object.values(dm.properties)).flat();
         let filteredMap = new Map(nestedList.map(obj => [`${obj.id}`, obj]));
         return filteredMap;
+    }
+
+
+    get adapters() {
+        return this._dataAdapters;
     }
 }
 export { DataStore };
