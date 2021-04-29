@@ -5,60 +5,6 @@
 ![platforms](https://img.shields.io/badge/platform-windows%20%7C%20osx%20%7C%20linux-lightgray.svg)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-Re-usable IoT data modules that you can use to create your own IoT application using the Forge Data Visualization Extension (Beta).
+Re-usable IoT data modules that you can use to create your own IoT application using the Forge Data Visualization Extension.
 
-For more information, see the [Data Visualization Extension (Beta) Developer's Guide](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/).
-
-## Installing and Using the Modules
-
-For full instructions for installing and running the Data Visualization Extension (Beta) Reference Application and supporting modules, see the [Data Visualization Extension (Beta) QuickStart](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/quickstart/).
-
-To install only this module:
-
-```bash
-npm install forge-dataviz-iot-data-modules
-```
-
-To import the data modules:
-
-```javascript
-//To import client-side data modules.
-import { X } from "forge-dataviz-iot-data-modules/client";
-
-// To import server-side data modules.
-const { Y } = require("forge-dataviz-iot-data-modules/server");
-```
-
-## Contents
-
-This package contains client-side and server-side modules. Server-side modules (or gateways) interact with the corresponding data provider. For example, AzureGateway interacts with Azure Time Series Insights API in order to retrieve specific sensor data.
-
-Client-side modules convert the data obtained from the corresponding DataGateway object into a consistent data format. For more details on how the client-side and server-side IoT data modules interact, see [Creating a Custom Data Adapter](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/advanced_topics/custom_data_adapter/)
-
-### Client-side modules:
-
--   QueryParam
--   PropertyValue
--   AggregatedValues
--   PropertyData
--   DeviceData
--   Device
--   DeviceProperty
--   DeviceModel
--   EventType
--   EventSource
--   QueryCompletedEventArgs
--   Session
--   DateTimeSpan
--   DataView
--   DataStore
--   DataAdapter
--   AzureDataAdapter
--   RestApiDataAdapter
-
-### Server-side modules:
-
--   AzureGateway
--   CsvDataGateway
--   DataGateway
--   SyntheticGateway
+Full instructions on how to use the package can be found [here](https://forge.autodesk.com/en/docs/dataviz/v1/developers_guide/npm_packages/data_modules/)
