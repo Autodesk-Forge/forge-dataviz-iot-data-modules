@@ -20,7 +20,7 @@ const Q = require("q");
 const Path = require("path");
 const ES = require("event-stream");
 const timestring = require("timestring");
-const { loadJSONFile } = require("./FileUtility.js")
+const { loadJSONFile } = require("./FileUtility.js");
 
 /**
  * @classdesc A data gateway that supplies CSV data from local
@@ -74,7 +74,7 @@ class CsvDataGateway extends DataGateway {
                 timestamps: [],
                 min: [],
                 max: [],
-                avg: []
+                avg: [],
             });
             return defer.promise;
         }
@@ -96,34 +96,36 @@ class CsvDataGateway extends DataGateway {
 
         const stream = FS.createReadStream(filePath)
             .pipe(ES.split())
-            .pipe(ES.mapSync((line) => {
-                let parts = line.split(self.delimiter);
-                if (lineNumber++ == 0) {
-                    timeIndex = parts.findIndex((item) => item.trim() == self.timeStampColumn);
-                    propIndex = parts.findIndex((item) => item.trim() == propertyId);
-                } else {
-                    let time = Math.round(new Date(parts[timeIndex].trim()).getTime() / 1000);
-                    if (time >= start && time <= end) {
-                        let value = parseFloat(parts[propIndex]);
-                        let index = Math.round((time - start) / resolution);
+            .pipe(
+                ES.mapSync((line) => {
+                    let parts = line.split(self.delimiter);
+                    if (lineNumber++ == 0) {
+                        timeIndex = parts.findIndex((item) => item.trim() == self.timeStampColumn);
+                        propIndex = parts.findIndex((item) => item.trim() == propertyId);
+                    } else {
+                        let time = Math.round(new Date(parts[timeIndex].trim()).getTime() / 1000);
+                        if (time >= start && time <= end) {
+                            let value = parseFloat(parts[propIndex]);
+                            let index = Math.round((time - start) / resolution);
 
-                        if (results[index]) {
-                            let [sum, count] = results[index];
-                            results[index] = [sum + value, count + 1];
+                            if (results[index]) {
+                                let [sum, count] = results[index];
+                                results[index] = [sum + value, count + 1];
 
-                            min[index] = Math.min(min[index], value);
-                            max[index] = Math.max(max[index], value);
-                            counts[index] = count;
-                        } else {
-                            results[index] = [value, 1];
+                                min[index] = Math.min(min[index], value);
+                                max[index] = Math.max(max[index], value);
+                                counts[index] = count;
+                            } else {
+                                results[index] = [value, 1];
 
-                            min[index] = value;
-                            max[index] = value;
-                            counts[index] = index;
+                                min[index] = value;
+                                max[index] = value;
+                                counts[index] = index;
+                            }
                         }
                     }
-                }
-            }))
+                })
+            )
             .on("error", (err) => {
                 defer.reject("something wrong." + err);
             })
@@ -149,7 +151,7 @@ class CsvDataGateway extends DataGateway {
                     max,
                     count: counts,
                     sum: sums,
-                    avg: aggregate
+                    avg: aggregate,
                 });
             });
 

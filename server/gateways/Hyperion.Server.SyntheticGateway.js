@@ -64,7 +64,8 @@ class Synthetic {
     _getStops(sensorType, time) {
         let week = weekNum(time);
         let day = time.getDay() % 7;
-        let sensorConfig = this.config["Strategy"][sensorType] || this.config["Strategy"]["Temperature"];
+        let sensorConfig =
+            this.config["Strategy"][sensorType] || this.config["Strategy"]["Temperature"];
         return sensorConfig[day][week];
     }
 

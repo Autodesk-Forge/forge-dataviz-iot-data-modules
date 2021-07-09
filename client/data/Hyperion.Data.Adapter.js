@@ -180,7 +180,9 @@ export class AzureDataAdapter extends DataAdapter {
     }
 
     async getDevices(deviceModelId) {
-        let devices = await fetch(`${this._baseName}/api/devices?provider=azure&project=test&model=${deviceModelId}`)
+        let devices = await fetch(
+            `${this._baseName}/api/devices?provider=azure&project=test&model=${deviceModelId}`
+        )
             .then((response) => {
                 if (!response.ok) {
                     return Promise.reject(response.json());
@@ -271,11 +273,15 @@ export class AzureDataAdapter extends DataAdapter {
 
                         if (device.tags.position) {
                             let p = device.tags.position;
-                            deviceObj.position = new THREE.Vector3(parseFloat(p.x), parseFloat(p.y), parseFloat(p.z));
+                            deviceObj.position = new THREE.Vector3(
+                                parseFloat(p.x),
+                                parseFloat(p.y),
+                                parseFloat(p.z)
+                            );
                         }
                         deviceObj.lastActivityTime = new Date(device.lastActivityTime);
                     }
-                })
+                });
             });
             return deviceModels;
         });
@@ -306,7 +312,10 @@ export class AzureDataAdapter extends DataAdapter {
                 const deviceData = new DeviceData(query.deviceId);
                 for (let prop of query.propertyIds) {
                     const aggrValues = new AggregatedValues(query.dateTimeSpan);
-                    aggrValues.tsValues = rawAggregates.timestamps.map((item) => getTimeInEpochSeconds(item));
+                    aggrValues.tsValues = rawAggregates.timestamps.map((item) =>
+                        getTimeInEpochSeconds(item)
+                    );
+
                     for (let property of rawAggregates.properties) {
                         if (property.name === prop + "Count") {
                             aggrValues.countValues = property.values;
@@ -444,7 +453,12 @@ export class RestApiDataAdapter extends DataAdapter {
                     device.name = deviceInfo.name;
 
                     const p = deviceInfo.position;
-                    device.position = new THREE.Vector3(parseFloat(p.x), parseFloat(p.y), parseFloat(p.z));
+                    device.position = new THREE.Vector3(
+                        parseFloat(p.x),
+                        parseFloat(p.y),
+                        parseFloat(p.z)
+                    );
+
                     device.lastActivityTime = deviceInfo.lastActivityTime;
                     device.deviceModel = deviceModel;
                     device.sensorTypes = deviceModel.propertyIds;

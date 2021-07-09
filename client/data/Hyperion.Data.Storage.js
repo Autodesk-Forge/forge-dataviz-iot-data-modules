@@ -16,7 +16,7 @@
 
 /*
     eslint no-unused-vars: [ "error", {
-        "varsIgnorePattern": "(QueryParam|DataAdapter|DeviceData|DeviceModel)"
+        "varsIgnorePattern": "(QueryParam|DataAdapter|DeviceModel|DeviceProperty)"
     }]
 */
 
@@ -484,7 +484,7 @@ class DataStore extends EventSource {
             const deviceModel = this._deviceModels[deviceModelId];
             return deviceModel.adapterId;
         } else {
-            return "RestApiDataAdapter"
+            return "RestApiDataAdapter";
         }
     }
 
@@ -512,10 +512,9 @@ class DataStore extends EventSource {
     getPropertiesFromDataStore() {
         const deviceModels = Object.values(this._deviceModels);
         const nestedList = deviceModels.map((dm) => Object.values(dm.properties)).flat();
-        let filteredMap = new Map(nestedList.map(obj => [`${obj.id}`, obj]));
+        let filteredMap = new Map(nestedList.map((obj) => [`${obj.id}`, obj]));
         return filteredMap;
     }
-
 
     get adapters() {
         return this._dataAdapters;

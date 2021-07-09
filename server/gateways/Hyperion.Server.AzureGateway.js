@@ -25,9 +25,11 @@ const msRestNodeAuth = require("@azure/ms-rest-nodeauth");
 const { IotHubClient } = require("@azure/arm-iothub");
 const { Registry, Twin } = require("azure-iothub");
 const Q = require("q");
-const { loadJSONFile } = require("./FileUtility.js")
+const { loadJSONFile } = require("./FileUtility.js");
 
-function _interopDefault(ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+function _interopDefault(ex) {
+    return ex && typeof ex === "object" && "default" in ex ? ex["default"] : ex;
+}
 
 const fetch = _interopDefault(require("node-fetch"));
 
@@ -97,7 +99,11 @@ class AzureGateway extends DataGateway {
                 process.env.AZURE_TENANT_ID
             );
 
-            const client = new IotHubClient(this.authRes.credentials, process.env.AZURE_SUBSCRIPTION_ID);
+            const client = new IotHubClient(
+                this.authRes.credentials,
+                process.env.AZURE_SUBSCRIPTION_ID
+            );
+
             this.client = client;
         }
         return this.authRes;
@@ -132,7 +138,9 @@ class AzureGateway extends DataGateway {
      */
     getRegistry() {
         if (!this.registry) {
-            this.registry = Registry.fromConnectionString(process.env.AZURE_IOT_HUB_CONNECTION_STRING);
+            this.registry = Registry.fromConnectionString(
+                process.env.AZURE_IOT_HUB_CONNECTION_STRING
+            );
         }
         return this.registry;
     }

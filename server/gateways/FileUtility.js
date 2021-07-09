@@ -1,4 +1,4 @@
-const FS = require('fs')
+const FS = require("fs");
 
 var FileUtility = {};
 
@@ -14,7 +14,7 @@ FileUtility.loadFile = async function (file) {
     });
 };
 
-FileUtility.loadJSONFile = async function(file) {
+FileUtility.loadJSONFile = async function (file) {
     let data = await FileUtility.loadFile(file);
     try {
         return JSON.parse(data);
@@ -22,6 +22,6 @@ FileUtility.loadJSONFile = async function(file) {
         console.error("Unable to parse file data. " + e);
         return {};
     }
-}
+};
 
 module.exports = FileUtility;

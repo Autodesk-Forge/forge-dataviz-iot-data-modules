@@ -232,9 +232,9 @@ class DeviceModel {
         this._deviceModelId = deviceModelId;
         this._adapterId = adapterId;
 
-        /** @type {Object.<string, DeviceProperty>} 
+        /** @type {Object.<string, DeviceProperty>}
          * The properties belonging to this DeviceModel.
-        */
+         */
         this._properties = {};
 
         /** @type {Object.<string, Device>}

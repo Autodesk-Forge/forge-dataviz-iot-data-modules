@@ -22,7 +22,12 @@ import {
     RestApiDataAdapter,
 } from "./Hyperion.Data.Adapter.js";
 
-import { PropertyValue, AggregatedValues, PropertyData, DeviceData } from "./Hyperion.Data.DataModel.js";
+import {
+    PropertyValue,
+    AggregatedValues,
+    PropertyData,
+    DeviceData,
+} from "./Hyperion.Data.DataModel.js";
 
 import { Device, DeviceProperty, DeviceModel } from "./Hyperion.Data.DeviceModel.js";
 
