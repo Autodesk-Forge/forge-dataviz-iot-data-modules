@@ -1,6 +1,6 @@
 {
     "name": "forge-dataviz-iot-data-modules",
-    "version": "0.1.10",
+    "version": "0.1.11",
     "description": "IoT data modules used by https://github.com/Autodesk-Forge/forge-dataviz-iot-reference-app",
     "author": "Autodesk Inc",
     "license": "Apache-2.0",
@@ -24,6 +24,7 @@
         "azure-iothub": "^1.13.0",
         "body-parser": "^1.19.0",
         "bufferutil": "^4.0.1",
+        "cookie-session": "^1.4.0",
         "dotenv": "^8.2.0",
         "event-stream": "^4.0.1",
         "express": "4.16.2",
