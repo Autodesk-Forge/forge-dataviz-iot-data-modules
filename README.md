@@ -1,3 +1,5 @@
+> This sample has been replaced by https://github.com/autodesk-platform-services/aps-iot-extensions-demo.
+
 # forge-dataviz-iot-data-modules
 
 [![npm version](https://badge.fury.io/js/forge-dataviz-iot-data-modules.svg)](https://badge.fury.io/js/forge-dataviz-iot-data-modules)
